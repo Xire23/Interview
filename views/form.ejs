@@ -1,0 +1,33 @@
+<!-- form.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= customer ? "Edit Customer" : "Add Customer" %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1><%= customer ? "Edit Customer" : "Add Customer" %></h1>
+    </header>
+    <main>
+        <form action="<%= customer ? '/edit-customer/' + customer.id : '/add-customer' %>" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%= customer ? customer.name : '' %>" required>
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<%= customer ? customer.email : '' %>" required>
+            
+            <label for="contact">Contact</label>
+            <input type="number" name="contact" id="contact" value="<%= customer ? customer.contact : '' %>" required>
+            
+            <label for="address">Address</label>
+            <textarea name="address" id="address"><%= customer ? customer.address : '' %></textarea>
+            
+            <button type="submit">Save</button>
+            <button type="button" onclick="location.href='/'">Cancel</button>
+        </form>
+    </main>
+</body>
+</html>

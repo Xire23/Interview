@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+        <form action="/search" method="GET">
+            <label for="searchQuery">Search Customers:</label>
+            <input type="text" id="searchQuery" name="searchQuery" placeholder="Enter name, email, etc." value="<%= searchQuery %>" />
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main>
+        <% if (customers.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% customers.forEach(customer => { %>
+                        <tr>
+                            <td><%= customer.name %></td>
+                            <td><%= customer.email %></td>
+                            <td><%= customer.contact %></td>
+                            <td><%= customer.address %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <h2>No customers found.</h2>
+        <% } %>
+    </main>
+</body>
+</html>
