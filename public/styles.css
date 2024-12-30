@@ -121,3 +121,35 @@ a {
 a:hover {
     color: #0056b3;
 }
+
+/* General Button Styles */
+.btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+    display: inline-block;
+}
+
+/* Specific Button Styles */
+.btn-view {
+    background-color: #4CAF50; /* Green */
+}
+
+.btn-delete {
+    background-color: #f44336; /* Red */
+}
+
+.btn-add {
+    background-color: #2196F3; /* Blue */
+    border: none;
+    cursor: pointer;
+}
+
+/* Hover Effects */
+.btn:hover {
+    opacity: 0.8;
+}

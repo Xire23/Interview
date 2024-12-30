@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+    <script>
+        function enableEditing() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => input.removeAttribute('readonly'));
+            document.getElementById('editButton').style.display = 'none'; // Hide the Edit button
+            document.getElementById('saveButton').style.display = 'inline-block'; // Show the Save button
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Customer Details</h1>
+    </header>
+    <main>
+        <% if (customer) { %>
+            <h2><%= customer.name %>'s Details</h2>
+            <!-- Form to edit customer details -->
+            <form action="/edit-customer/<%= customer.id %>" method="POST">
+                <table>
+                    <tr>
+                        <th><label for="name">Name:</label></th>
+                        <td><input type="text" id="name" name="name" value="<%= customer.name %>" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="email">Email:</label></th>
+                        <td><input type="email" id="email" name="email" value="<%= customer.email %>" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="contact">Contact:</label></th>
+                        <td><input type="text" id="contact" name="contact" value="<%= customer.contact %>" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="address">Address:</label></th>
+                        <td><input type="text" id="address" name="address" value="<%= customer.address %>" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="additionalInfo">Additional Info:</label></th>
+                        <td>
+                            <textarea id="additionalInfo" name="additionalInfo" readonly>
+                                <%= customer.additionalInfo || '' %>
+                            </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <!-- Buttons to toggle between edit and save -->
+                <button type="button" id="editButton" onclick="enableEditing()">Edit</button>
+                <button type="submit" id="saveButton" style="display: none;">Save Changes</button>
+            </form>
+        <% } else { %>
+            <p>No customer found.</p>
+        <% } %>
+        <a href="/">Back to Customer List</a>
+    </main>
+</body>
+</html>
